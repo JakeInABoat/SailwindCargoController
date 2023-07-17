@@ -7,5 +7,7 @@
     "Requirements": [],
     "AssemblyName": "CargoController.dll",
     "EntryMethod": "CargoController.Main.Load",
-    "Description": "Provides a simpler / quicker way to manage your cargo."
+    "Description": "Provides a simpler / quicker way to manage your cargo.",
+	"HomePage": "https://github.com/JakeInABoat/SailwindCargoController",
+	"Repository": "https://github.com/JakeInABoat/SailwindCargoController"
 }
