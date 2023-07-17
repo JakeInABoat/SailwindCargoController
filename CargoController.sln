@@ -14,4 +14,10 @@ Global
 		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = @/*\n * CargoController - A mod for the game Sailwind\n * Copyright(C) 2023 Jacob Burbach (aka "JakeInABoat")\n *\n * This program is free software: you can redistribute it and/or modify it\n * under the terms of the GNU Lesser General Public License, version 3, as\n * published by the Free Software Foundation.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the\n * GNU General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.If not, see <https://www.gnu.org/licenses/>\n */
+		version = 0.1.0
+	EndGlobalSection
 EndGlobal
