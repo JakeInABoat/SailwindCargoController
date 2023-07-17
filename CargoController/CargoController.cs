@@ -170,8 +170,7 @@ namespace CargoController
 		private Texture2D lightBrownTexture = null;
 		private Texture2D reddishTexture = null;
 
-		public static CargoControllerUI instance = null;
-		public GoPointer pointer { get; private set; }
+		public static GoPointer pointer = null;
 
 		bool ValidateGood(Good good)
 		{
@@ -399,7 +398,7 @@ namespace CargoController
 		{
 			static void Postfix(GoPointer ___pointer)
 			{
-				CargoControllerUI.instance.pointer = ___pointer;
+				CargoControllerUI.pointer = ___pointer;
 			}
 		}
 	}

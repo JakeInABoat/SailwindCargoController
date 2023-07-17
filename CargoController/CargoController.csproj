@@ -18,6 +18,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetFile} /home/jacob/Games/Sailwind/Sailwind_m/Mods/${ProjectName}</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${ProjectDir}/info.json /home/jacob/Games/Sailwind/Sailwind_m/Mods/${ProjectName}/</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
