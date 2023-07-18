@@ -16,7 +16,7 @@ To install the CargoController mod simply unpack the zip to the Sailwind game di
 directory should look like below.
 
 	📁 Sailwind
-		└📁 Mods
-			└📁 CargoController
-				├ CargoController.dll
-				└ info.json
+	   └📁 Mods
+	       └📁 CargoController
+		   ├ CargoController.dll
+		   └ info.json
