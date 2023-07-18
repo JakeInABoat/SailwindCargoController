@@ -52,58 +52,9 @@ namespace CargoController
 
 		static void CheckConsoleInput()
 		{
-			if (enabled) {
+			if (!enabled) {
 				return;
 			}
-			/*
-			if (consoleInput.text == "checknull") {
-				foreach (Good g in IslandMarketWarehouseAreaTracker.allGoodsInArea) {
-					if (g == null) {
-						Log("Whisket tango Foxtrot");
-					}
-				}
-			}
-
-			if (consoleInput.text == "port") {
-				PlayerReputation.ChangeReputation(35000, PortRegion.medi);
-				PlayerReputation.ChangeReputation(35000, PortRegion.alankh);
-				PlayerReputation.ChangeReputation(35000, PortRegion.emerald);
-				var fonts = Resources.FindObjectsOfTypeAll<Font>();
-				foreach (var f in fonts) {
-					Log(f.ToString());
-				}
-
-				float closestDistance = 10000000f;
-				IslandHorizon closestIsland = null;
-
-				foreach (IslandHorizon island in IslandDistanceTracker.instance.islands) {
-					float d = Vector3.Distance(island.GetPosition(), Refs.observerMirror.transform.position);
-					if (d < closestDistance) {
-						closestIsland = island;
-						closestDistance = d;
-					}
-				}
-
-				if (closestIsland != null) {
-					foreach (Port port in Port.ports) {
-						if (port == null)
-							continue;
-
-						if (closestIsland.economy == port.island) {
-							Log("Closest port is '" + port.GetPortName() + "' @ " + Vector3.Distance(port.transform.position, Refs.observerMirror.transform.position));
-							IslandMissionOffice office = port.GetComponent<IslandMissionOffice>();
-							IslandMarket market = office.GetComponent<IslandMarket>();
-							IslandMarketWarehouseArea area = market.GetWarehouseArea();
-							List<Good> goods = Traverse.Create(area).Field("goodsInArea").GetValue<List<Good>>();
-							foreach (Good g in goods) {
-								Log(g.ToString());
-							}
-						}
-					}
-					Log("Closest island is '" + closestIsland.name + " at " + closestDistance.ToString());
-				}
-			}
-			*/
 		}
 
 		static void InitializeConsole()
@@ -130,8 +81,6 @@ namespace CargoController
 			}
 		}
 
-
-
 		[HarmonyPatch(typeof(PlayerNeedsUI), "ToggleInventory")]
 		static class PlayerNeeds_ToggleInventory
 		{
@@ -145,19 +94,8 @@ namespace CargoController
 		{
 			logger.Log(message);
 		}
-
-		/*
-		[HarmonyPatch(typeof(BoatMass), "UpdateMass")]
-		static class BoatMass_UpdateMass
-		{
-			private static void Postfix(BoatMass __instance)
-			{
-				//Rigidbody body = (Rigidbody)Traverse.Create(__instance).Field("body").GetValue();
-				//Log("BoatMass.UpdateMass => " + body.mass);
-			}
-		}
-		*/
 	}
+
 
 	public class CargoControllerUI : MonoBehaviour
 	{
@@ -313,10 +251,7 @@ namespace CargoController
 
 				if (GUILayout.Button(name)) {
 					Good good = goods[0];
-					ShipItem item = good.GetComponent<ShipItem>();
-					Traverse.Create(PlayerNeedsUI.instance).Method("CloseNeedsUI").GetValue();
-					item.transform.position = pointer.transform.position + pointer.transform.forward * item.holdDistance;
-					pointer.PickUpItem(item);
+					PickupGood(good);
 				}
 			}
 
@@ -333,10 +268,7 @@ namespace CargoController
 				String name = goods[0].GetComponent<ShipItem>().name + " x" + goods.Count.ToString();
 				if (GUILayout.Button(name)) {
 					Good good = goods[0];
-					ShipItem item = good.GetComponent<ShipItem>();
-					Traverse.Create(PlayerNeedsUI.instance).Method("CloseNeedsUI").GetValue();
-					item.transform.position = pointer.transform.position + pointer.transform.forward * item.holdDistance;
-					pointer.PickUpItem(item);
+					PickupGood(good);
 				}
 			}
 		}
@@ -391,6 +323,15 @@ namespace CargoController
 			DoGoodsUI(IslandMarketWarehouseAreaTracker.missionGoodsInArea, IslandMarketWarehouseAreaTracker.nonMissionGoodsInArea);
 
 			VerticalEnd();
+		}
+
+		void PickupGood(Good good)
+		{
+			ShipItem item = good.GetComponent<ShipItem>();
+			Traverse.Create(PlayerNeedsUI.instance).Method("CloseNeedsUI").GetValue();
+			item.transform.position = pointer.transform.position + pointer.transform.forward * item.holdDistance;
+			item.transform.rotation = Quaternion.identity;
+			pointer.PickUpItem(item);
 		}
 
 		[HarmonyPatch(typeof(LookUI), "RegisterPointer")]
