@@ -2,7 +2,7 @@
     "Id": "CargoController",
     "DisplayName": "Cargo Controller",
     "Author": "Jacob Burbach (aka JakeInABoat)",
-    "Version": "0.1.0",
+    "Version": "0.2.0",
     "ManagerVersion": "0.24.0.0",
     "Requirements": [],
     "AssemblyName": "CargoController.dll",

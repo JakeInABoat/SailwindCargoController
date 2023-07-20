@@ -30,13 +30,10 @@ Global
 		$3.NewLinesForBracesInAnonymousTypes = False
 		$3.NewLinesForBracesInObjectCollectionArrayInitializers = False
 		$3.NewLinesForBracesInLambdaExpressionBody = False
-		$3.NewLineForElse = False
-		$3.NewLineForCatch = False
-		$3.NewLineForFinally = False
 		$3.NewLineForMembersInObjectInit = False
 		$3.NewLineForMembersInAnonymousTypes = False
 		$3.NewLineForClausesInQuery = False
 		$3.scope = text/x-csharp
-		version = 0.1.0
+		version = 0.2.0
 	EndGlobalSection
 EndGlobal

@@ -102,6 +102,7 @@ namespace CargoController
         private float timeUntilPortCheck = 1.0f;
         private Port nearestPort = null;
         private float nearestPortDistance = 100000000.0f;
+        private float maximumPortDistance = 75.0f;
         private Font immortalFont = null;
         private Font architectsFont = null;
         private Texture2D darkBrownTexture = null;
@@ -141,7 +142,8 @@ namespace CargoController
             foreach (Font font in Resources.FindObjectsOfTypeAll<Font>()) {
                 if (font.name == "IMMORTAL") {
                     immortalFont = font;
-                } else if (font.name == "ArchitectsDaughter") {
+                }
+                else if (font.name == "ArchitectsDaughter") {
                     architectsFont = font;
                 }
             }
@@ -312,10 +314,10 @@ namespace CargoController
 
             GUILayout.Label("Goods :: Port");
 
-            if (nearestPortDistance > 50.0f) {
+            if (nearestPortDistance > maximumPortDistance) {
                 GUIStyle s = new GUIStyle(GUI.skin.label);
                 s.normal.background = darkBrownTexture;
-                GUILayout.Label("no port nearby...", s);
+                GUILayout.Label("no port office nearby...", s);
                 VerticalEnd();
                 return;
             }
@@ -327,10 +329,17 @@ namespace CargoController
 
         void PickupGood(Good good)
         {
+            Main.Log(good.sizeDescription);
+
+            float extraHoldDistance = 0.0f;
+            if (good.sizeDescription == "large crate") {
+                extraHoldDistance = 0.2f;
+            }
+
             ShipItem item = good.GetComponent<ShipItem>();
             Traverse.Create(PlayerNeedsUI.instance).Method("CloseNeedsUI").GetValue();
-            item.transform.position = pointer.transform.position + pointer.transform.forward * item.holdDistance;
-            item.transform.rotation = Quaternion.identity;
+            item.transform.position = pointer.transform.position + pointer.transform.forward * (item.holdDistance + extraHoldDistance);
+            item.transform.rotation = Refs.observerMirror.transform.rotation;
             pointer.PickUpItem(item);
         }
 
