@@ -20,11 +20,22 @@ using UnityEngine;
 
 namespace CargoController
 {
+    [HarmonyPatch(typeof(LookUI), "RegisterPointer")]
+    static class LookUI_RegisterPointer
+    {
+         static void Postfix(GoPointer ___pointer)
+         {
+            CargoController.Log("LookUI_RegisterPointer");
+            CargoControllerUI.Instance?.SetPointer(___pointer);
+         }
+    }
+
     [HarmonyPatch(typeof(PlayerNeedsUI), "ToggleInventory")]
     static class PlayerNeeds_ToggleInventory
     {
         static void Postfix(bool state)
         {
+            CargoController.Log("PlayerNeedsUI_ToggleInventory");
             CargoControllerUI.Instance?.SetVisible(state);
         }
     }

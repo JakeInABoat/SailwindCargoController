@@ -281,5 +281,10 @@ namespace CargoController
         {
             m_visible = visible;
         }
+
+        public void SetPointer(GoPointer gp)
+        {
+            pointer = gp;
+        }
     }
 }

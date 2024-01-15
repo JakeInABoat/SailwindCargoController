@@ -15,6 +15,7 @@
 //  * along with this program.If not, see <https://www.gnu.org/licenses/>
 //  */
 using System;
+using System.Collections;
 using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
@@ -84,19 +85,23 @@ namespace CargoController
         }
 
         private bool m_enabled;
-        private GameObject m_guiObject;
+        //private GameObject m_guiObject;
 
         private void Awake()
         {
             Instance = this;
 
-            Harmony harmony = new Harmony(GUID);
+            var harmony = new Harmony(GUID);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             m_enabled = true;
 
-            m_guiObject = new GameObject();
-            m_guiObject.AddComponent<CargoControllerUI>();
+        }
+
+        private IEnumerator Start()
+        {
+            yield return new WaitUntil(() => GameState.justStarted);
+            gameObject.AddComponent<CargoControllerUI>();
         }
 
         public static void Log(string message)
