@@ -9,14 +9,24 @@ grab one of those goods.
 ![Screenshot](https://raw.githubusercontent.com/JakeInABoat/SailwindCargoController/5a7cf5c2cc9609c0305debb4b17fe6737ce8c841/screenshot.jpg?raw=true)
 
 
-To use mods in Sailwind you will need **[Unity Mod Manager](https://www.nexusmods.com/site/mods/21)**. Follow the
-instructions there to patch the game. 
+To use CargoController in Sailwind you will need a mod loader, either **[Unity Mod Manager](https://www.nexusmods.com/site/mods/21)** or **[BepInEx](https://github.com/BepInEx/BepInEx)**. Follow
+the installation instructions for your chosen mod loader.
 
-To install the CargoController mod simply unpack the zip to the Sailwind game directory. Your game
+To install the CargoController mod simply unpack the (UMM or BepInEx) zip to the Sailwind game directory. Your game
 directory should look like below.
+
+**Unity Mod Manager**
 
 	📁 Sailwind
 	   └📁 Mods
 	       └📁 CargoController
 		   ├ CargoController.dll
 		   └ info.json
+
+**BepInEx**
+
+	📁 Sailwind
+	   └📁 BepInEx
+	       └📁 plugins
+		   └📁 CargoController
+		   	└ CargoController.dll
