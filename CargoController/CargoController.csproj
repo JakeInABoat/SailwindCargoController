@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">BepinEx_Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -10,12 +10,12 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <ReleaseVersion>0.2.0</ReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'BepinEx_Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;BUILD_BEPINEX;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -23,31 +23,90 @@
       <CustomCommands>
         <Command>
           <type>AfterBuild</type>
-          <command>cp ${TargetFile} /home/jacob/Games/Sailwind/Sailwind_m/Mods/${ProjectName}</command>
-        </Command>
-        <Command>
-          <type>AfterBuild</type>
-          <command>cp ${ProjectDir}/info.json /home/jacob/Games/Sailwind/Sailwind_m/Mods/${ProjectName}/</command>
-        </Command>
-      </CustomCommands>
-    </CustomCommands>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <CustomCommands>
-      <CustomCommands>
-        <Command>
-          <type>AfterBuild</type>
-          <command>cp ${TargetFile} FOR_RELEASE/Mods/${ProjectName}</command>
+          <command>mkdir -p FOR_RELEASE/${ProjectConfig}/BepInEx/plugins/${ProjectName}</command>
           <workingdir>${SolutionDir}</workingdir>
         </Command>
         <Command>
           <type>AfterBuild</type>
-          <command>cp ${ProjectDir}/info.json FOR_RELEASE/Mods/${ProjectName}</command>
+          <command>cp ${TargetFile} FOR_RELEASE/${ProjectConfig}/BepInEx/plugins/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'BepinEx_Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>BUILD_BEPINEX;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>mkdir -p FOR_RELEASE/${ProjectConfig}/BepInEx/plugins/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetFile} FOR_RELEASE/${ProjectConfig}/BepInEx/plugins/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UMM_Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;BUILD_UMM;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>mkdir -p FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${ProjectDir}/info.json FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetFile} FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UMM_Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>BUILD_UMM;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>mkdir -p FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${ProjectDir}/info.json FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
+          <workingdir>${SolutionDir}</workingdir>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp ${TargetFile} FOR_RELEASE/${ProjectConfig}/Mods/${ProjectName}</command>
           <workingdir>${SolutionDir}</workingdir>
         </Command>
       </CustomCommands>
@@ -55,40 +114,46 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityModManager">
-      <HintPath>..\..\..\..\..\Games\Sailwind\Sailwind_m\Sailwind_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\..\..\..\Games\Sailwind\BepInEx\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\..\Games\Sailwind\SailwindLatest\Sailwind_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>..\..\..\..\..\Games\Sailwind\BepInEx\BepInEx\core\HarmonyXInterop.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CargoController.cs" />
+    <Compile Include="CargoControllerUI.cs" />
+    <Compile Include="Patches.cs" />
+    <Compile Include="IslandMarketWarehouseAreaTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="info.json" />

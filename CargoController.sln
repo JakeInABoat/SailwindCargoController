@@ -7,12 +7,20 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		BepinEx_Debug|Any CPU = BepinEx_Debug|Any CPU
+		BepinEx_Release|Any CPU = BepinEx_Release|Any CPU
+		UMM_Debug|Any CPU = UMM_Debug|Any CPU
+		UMM_Release|Any CPU = UMM_Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.BepinEx_Debug|Any CPU.ActiveCfg = BepinEx_Debug|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.BepinEx_Debug|Any CPU.Build.0 = BepinEx_Debug|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.BepinEx_Release|Any CPU.ActiveCfg = BepinEx_Release|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.BepinEx_Release|Any CPU.Build.0 = BepinEx_Release|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.UMM_Debug|Any CPU.ActiveCfg = UMM_Debug|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.UMM_Debug|Any CPU.Build.0 = UMM_Debug|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.UMM_Release|Any CPU.ActiveCfg = UMM_Release|Any CPU
+		{24DFC06D-7B33-4724-9E98-A9D88B25FFFB}.UMM_Release|Any CPU.Build.0 = UMM_Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
