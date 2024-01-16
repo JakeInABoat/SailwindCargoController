@@ -35,7 +35,7 @@ namespace CargoController
         private Texture2D reddishTexture = null;
         private bool m_visible;
 
-        public static GoPointer pointer = null;
+        private static GoPointer pointer = null;
 
         public static CargoControllerUI Instance;
 
@@ -282,7 +282,7 @@ namespace CargoController
             m_visible = visible;
         }
 
-        public void SetPointer(GoPointer gp)
+        public static void SetPointer(GoPointer gp)
         {
             pointer = gp;
         }

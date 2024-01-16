@@ -71,7 +71,7 @@ namespace CargoController
     {
         public const string GUID = "com.jakeinaboat.cargocontroller";
         public const string NAME = "Cargo Controller";
-        public const string VERSION = "0.3.0";
+        public const string VERSION = "0.3.1";
 
         public static CargoController Instance;
 

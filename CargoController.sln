@@ -42,6 +42,6 @@ Global
 		$3.NewLineForMembersInAnonymousTypes = False
 		$3.NewLineForClausesInQuery = False
 		$3.scope = text/x-csharp
-		version = 0.2.0
+		version = 0.3.1
 	EndGlobalSection
 EndGlobal

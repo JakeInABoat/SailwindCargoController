@@ -26,7 +26,7 @@ namespace CargoController
          static void Postfix(GoPointer ___pointer)
          {
             CargoController.Log("LookUI_RegisterPointer");
-            CargoControllerUI.Instance?.SetPointer(___pointer);
+            CargoControllerUI.SetPointer(___pointer);
          }
     }
 
